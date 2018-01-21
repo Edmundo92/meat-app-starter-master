@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-
-import {Restaurant} from './restaurant.model';
+import { RestaurantsComponent } from 'app/restaurants/restaurants.component'; // esta é a interface, que está como tipo da var restaurant
 
 @Component({
   selector: 'mt-restaurant',
@@ -8,7 +7,8 @@ import {Restaurant} from './restaurant.model';
 })
 export class RestaurantComponent implements OnInit {
 
-  @Input() restaurant: Restaurant;
+  @Input() restaurant: RestaurantsComponent
+
   constructor() { }
 
   ngOnInit() {

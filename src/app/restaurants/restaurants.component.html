@@ -7,12 +7,14 @@
 
 
 <section class="content">
+
   <div class="row">
     <div *ngFor="let restaurant of restaurants" class="col-sm-6 col-xs-12">
-      <mt-restaurant [restaurant]="restaurant"></mt-restaurant>
-    </div>
-    <!-- /.col -->
+        <!-- aqui tenho o seguinte: [restaurant]="restaurant", por ser mais de um restaurante -->
+        <mt-restaurant [restaurant]="restaurant"></mt-restaurant>
+    </div> 
   </div>
+
 </section>
 
 <!-- FIM  do CONTEÚDO -->
