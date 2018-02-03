@@ -6,6 +6,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ROUTES } from './app.routes';
 
+//resolve problemas de roteamento
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
@@ -19,9 +22,12 @@ import { ReviewsComponent } from './restaurant-detail/reviews/reviews.component'
 import { OrderSumaryComponent } from './order-sumary/order-sumary.component';
 import { SharedModule } from 'app/shared/shared.module';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+
 //o PreloadAllModules coloca os modulos conf para carregarem em lazy-loading a rodar em uma outra thread, mas em background
 //e dessa forma evitar com que modulo muito grandes demorem a carregar
 import { PreloadAllModules } from '@angular/router';
+import { NotFoundComponent } from './not-found/not-found.component';
 //import { CoreModule } from 'app/core/core.module';
 
 
@@ -37,16 +43,18 @@ import { PreloadAllModules } from '@angular/router';
     ShoppingCartComponent,
     MenuItemComponent,
     ReviewsComponent,
-    OrderSumaryComponent
+    OrderSumaryComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    BrowserAnimationsModule,
     SharedModule.forRoot(),
     // CoreModule, 
     RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})
   ],
-  providers: [
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy},
               {provide: LOCALE_ID, useValue: 'pt-BR'}
             ],
   bootstrap: [AppComponent]
